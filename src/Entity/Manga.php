@@ -2,80 +2,74 @@
 
 namespace App\Entity;
 
-use App\Repository\MangaRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: MangaRepository::class)]
+#[ORM\Entity]
 class Manga
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    #[ORM\Column(type: 'string', length: 255)]
+    private string $name;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $description = null;
+    #[ORM\Column(type: 'text')]
+    private string $description;
 
-    #[ORM\Column(length: 255)]
-    private ?string $author = null;
+    #[ORM\Column(type: 'string', length: 255)]
+    private string $author;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $cover = null;
+    #[ORM\Column(type: 'date')]
+    private ?\DateTimeInterface $releaseDate = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function setName(string $name): static
+    public function setName(string $name): self
     {
         $this->name = $name;
-
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getDescription(): string
     {
         return $this->description;
     }
 
-    public function setDescription(?string $description): static
+    public function setDescription(string $description): self
     {
         $this->description = $description;
-
         return $this;
     }
 
-    public function getAuthor(): ?string
+    public function getAuthor(): string
     {
         return $this->author;
     }
 
-    public function setAuthor(string $author): static
+    public function setAuthor(string $author): self
     {
         $this->author = $author;
-
         return $this;
     }
 
-    public function getCover(): ?string
+    public function getReleaseDate(): ?\DateTimeInterface
     {
-        return $this->cover;
+        return $this->releaseDate;
     }
 
-    public function setCover(?string $cover): static
+    public function setReleaseDate(\DateTimeInterface $releaseDate): self
     {
-        $this->cover = $cover;
-
+        $this->releaseDate = $releaseDate;
         return $this;
     }
 }

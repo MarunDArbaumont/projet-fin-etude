@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Manga{% endblock %}
+
+{% block body %}
+    <h1>Add a New Manga</h1>
+
+    {% if app.user and is_granted('ROLE_ADMIN') %}
+        {{ form_start(mangaForm) }}
+            {{ form_widget(mangaForm) }}
+            <button type="submit">Save</button>
+        {{ form_end(mangaForm) }}
+    {% else %}
+        <p>You do not have permission to access this page.</p>
+    {% endif %}
+{% endblock %}
