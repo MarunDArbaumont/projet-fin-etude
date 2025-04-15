@@ -30,12 +30,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotBlank]
     private string $name;
 
+    #[ORM\Column(type: 'text', nullable: true)]
+    private ?string $bio = null;
+
+    #[ORM\Column(type: 'boolean', options: ['default' => true])]
+    private bool $firstLogin = true;
+
     public function getId(): ?int { return $this->id; }
     public function getEmail(): string { return $this->email; }
     public function setEmail(string $email): self { $this->email = $email; return $this; }
 
-    public function getRoles(): array { return $this->roles; }
-    public function setRoles(array $roles): self { $this->roles = $roles; return $this; }
+    public function getRoles(): array {
+        $roles = $this->roles;
+        $roles[] = 'ROLE_USER';
+        return array_unique($roles);
+    }
+    public function setRoles(array $roles): self {
+        $this->roles = $roles;
+        return $this;
+    }
 
     public function getPassword(): string { return $this->password; }
     public function setPassword(string $password): self { $this->password = $password; return $this; }
@@ -45,4 +58,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function eraseCredentials():void {}
     public function getUserIdentifier(): string { return $this->email; }
+    public function getBio(): ?string
+    {
+        return $this->bio;
+    }
+
+    public function setBio(?string $bio): self
+    {
+        $this->bio = $bio;
+        return $this;
+    }
+
+    public function getFirstLogin(): bool
+    {
+        return $this->firstLogin;
+    }
+
+    public function setFirstLogin(bool $firstLogin): self
+    {
+        $this->firstLogin = $firstLogin;
+
+        return $this;
+    }
 }

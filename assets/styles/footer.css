@@ -1,0 +1,8 @@
+footer {
+    display: flex;
+    padding: 0 5rem;
+    gap: var(--normal-gap);
+    min-height: 4rem;
+    align-items: center;
+    justify-content: space-between;
+}

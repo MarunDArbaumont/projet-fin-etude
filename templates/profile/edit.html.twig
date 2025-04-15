@@ -1,0 +1,12 @@
+{% extends 'layouts/layout-full-width.html.twig' %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block contentFullWidth %}
+<h1>Edit Your Profile</h1>
+
+{{ form_start(profileForm) }}
+    {{ form_row(profileForm.bio) }}
+    <button class="btn btn-primary">Save</button>
+{{ form_end(profileForm) }}
+{% endblock %}

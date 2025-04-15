@@ -1,10 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'layouts/layout-full-width.html.twig' %}
 
-{% block body %}
+{% block contentFullWidth %}
     <h1>Register</h1>
 
     {{ form_start(registerForm) }}
         {{ form_widget(registerForm) }}
-        <button type="submit">Sign Up</button>
     {{ form_end(registerForm) }}
 {% endblock %}

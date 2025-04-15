@@ -1,9 +1,20 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <div class="container">
-        <div class="row">
-            {% block contentFullWidth %}{% endblock %}
-        </div>
+<header>
+    <nav>
+        <a href="{{ path('home') }}">Home</a>
+        <a href="{{ path('profile') }}">Profile</a>
+        <a href="{{ path('manga_list') }}">Manga</a>
+    </nav>
+    {% if app.user %}
+    <a href="{{ path('app_logout') }}">Logout</a>
+    {% endif %}
+    </header>
+    <div id="content">
+        {% block contentFullWidth %}{% endblock %}
     </div>
+    <footer>
+            <p>Ceci est le footer</p>
+        </footer>
 {% endblock %}

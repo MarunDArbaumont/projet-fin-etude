@@ -1,0 +1,22 @@
+{% extends 'layouts/layout-full-width.html.twig' %}
+
+{% block title %}Manga List{% endblock %}
+
+{% block contentFullWidth %}
+    <h1>List of Manga</h1>
+
+    <ul class="manga-list">
+        {% for manga in mangas %}
+            <a class="manga-card" href="{{ app.request.getSchemeAndHttpHost() }}/manga/{{manga.id}}">
+                <img src="{{ asset('uploads/covers/' ~ manga.cover) }}"/>
+                <div>
+                    <p>{{ manga.name }}</p>
+                    <p>{{ manga.author }}</p>
+                </div>
+            </a>
+        {% else %}
+            <p>No mangas found.</p>
+        {% endfor %}
+    </ul>
+{% endblock %}
+

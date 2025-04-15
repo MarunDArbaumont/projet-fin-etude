@@ -1,21 +1,24 @@
-{% extends 'base.html.twig' %}
+{% extends 'layouts/layout-full-width.html.twig' %}
+
 
 {% block title %}Login{% endblock %}
 
-{% block body %}
+{% block contentFullWidth %}
     <h1>Login</h1>
 
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    <form method="post">
-        <label for="username">Email:</label>
-        <input type="text" name="_username" id="username" value="{{ last_username }}" required>
-        
-        <label for="password">Password:</label>
-        <input type="password" name="_password" id="password" required>
-
+    <form method="post" name="login">
+        <div>
+            <label for="username">Email</label>
+            <input type="text" name="_username" id="username" value="{{ last_username }}" required>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" name="_password" id="password" required>
+        </div>
         <button type="submit">Login</button>
     </form>
 {% endblock %}

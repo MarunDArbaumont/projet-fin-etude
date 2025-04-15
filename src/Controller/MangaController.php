@@ -13,17 +13,16 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class MangaController extends AbstractController
 {
-    #[Route('/manga', name: 'manga_list')]
     public function index(EntityManagerInterface $entityManager): Response
     {
-        $mangas = $entityManager->getRepository(Manga::class)->findAll();
+        $mangaList = $entityManager->getRepository(Manga::class)->findAll();
+        usort($mangaList, function($a, $b){return strcmp($a->getAuthor(), $b->getAuthor());});
 
         return $this->render('manga/index.html.twig', [
-            'mangas' => $mangas,
+            'mangas' => $mangaList,
         ]);
     }
 
-    #[Route('/manga/{id}', name: 'manga_show', requirements: ['id' => '\d+'])]
     public function show(EntityManagerInterface $entityManager, int $id): Response
     {
         $manga = $entityManager->getRepository(Manga::class)->find($id);
@@ -32,10 +31,9 @@ class MangaController extends AbstractController
             throw $this->createNotFoundException('No manga found for id ' . $id);
         }
 
-        return $this->render('manga/show.html.twig', ['manga' => $manga]);
+        return $this->render('manga/show.html.twig', ['manga'=> $manga]);
     }
 
-    #[Route('/manga/new', name: 'manga_new')]
     #[IsGranted('ROLE_ADMIN')] // Restrict access to only users with ROLE_ADMIN
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -45,11 +43,21 @@ class MangaController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $coverFile */
+            $coverFile = $form->get('cover')->getData();
+        
+            if ($coverFile) {
+                $newFilename = uniqid() . '.' . $coverFile->guessExtension();
+                $coverFile->move(
+                    $this->getParameter('cover_directory'),
+                    $newFilename
+                );
+                $manga->setCover($newFilename); 
+            }
+        
             $entityManager->persist($manga);
             $entityManager->flush();
-
-            $this->addFlash('success', 'Manga successfully added!');
-
+        
             return $this->redirectToRoute('manga_list');
         }
 

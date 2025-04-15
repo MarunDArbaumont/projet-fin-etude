@@ -1,3 +1,78 @@
+/* General */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* ---- Font ---- */
+@font-face {
+    font-family: "Roboto";
+    src: url("/assets/fonts/Roboto/Roboto-Regular.ttf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Roboto Bold";
+    src: url("/assets/fonts/Roboto/Roboto-Bold.ttf");
+}
+
+:root {
+    --primary-color: #1C1C1E;
+    --primaray-color-contrast: #FAFAFA;
+    --secondar-color: #5A1E3E;
+    --secondary-color-contrast: #A14D63;
+    --primary-font: "Roboto", sans-serif;
+    --primary-font-bold: "Roboto Bold", sans-serif;
+    --small-gap: 0.5rem;
+    --normal-gap: 1rem;
+    --big-gap: 2rem;
+    --primary-font-color: #EDEDED;
+    --primary-font-color-constrast: #939393;
+    --content-width: 80rem;
+    --basic-padding: 1.5rem;
+}
+
+h1,
+h2,
+h3,
+p,
+a,
+li,
+label {
+    font-family: var(--primary-font);
+    color: var(--primary-font-color);
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-font-color);
+}
+
+a:hover {
+    color: var(--primary-font-color-constrast);
+}
+
 body {
-    background-color: skyblue;
+    background-color: var(--primary-color);
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 5rem;
+    gap: var(--big-gap);
+}
+
+button {
+    background-color: var(--secondar-color);
+    border: 1px solid var(--secondar-color);
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-size: 1rem;
+    color: var(--primary-font-color);
+}
+
+button:hover {
+    background-color: var(--primary-font-color);
+    color: var(--secondar-color);
 }

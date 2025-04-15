@@ -1,0 +1,13 @@
+{% extends 'layouts/layout-full-width.html.twig' %}
+{% block contentFullWidth %}
+    <div class="single-manga">
+        <img class="single-manga-cover" src="{{ asset('uploads/covers/' ~ manga.cover) }}"/>
+        <div class="single-manga-info">
+            <h2 class="single-manga-title">{{ manga.name }}</h2>
+            <p>Author: {{ manga.author }}</p>
+            <p>Description: {{ manga.description }}</p>
+            <p>(Released: {{ manga.releaseDate|date('Y-m-d') }})</p>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,34 @@
+/* Manga list */
+.manga-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--big-gap);
+}
+
+.manga-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--normal-gap);
+    padding: var(--basic-padding);
+    border: 1px solid var(--primary-font-color-constrast);
+    border-radius: 10px;
+    height: 24rem;
+    width: 15rem;
+}
+
+.manga-card img {
+    width: 100%;
+    height: 100%;
+}
+
+/* Single manga */
+.single-manga {
+    display: flex;
+    justify-content: flex-start;
+    gap: var(--normal-gap);
+}
+
+.single-manga-cover {
+    width: 20rem;
+}

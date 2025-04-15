@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RegisterController extends AbstractController
 {
-    #[Route('/register', name: 'register')]
+
     public function register(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
     {
         $user = new User();

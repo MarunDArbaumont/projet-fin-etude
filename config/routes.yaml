@@ -1,5 +1,64 @@
 controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+  resource:
+    path: ../src/Controller/
+    namespace: App\Controller
+  type: attribute
+
+# Define a route for the homepage
+home:
+  path: /
+  controller: App\Controller\MainController::index
+  methods: [GET]
+
+# Define a route for registering users
+register:
+  path: /register
+  controller: App\Controller\RegisterController::register
+  methods: [GET, POST]
+
+# Define a route to login
+app_login:
+  path: /login
+  controller: App\Controller\SecurityController::login
+
+app_logout:
+  path: /logout
+  controller: App\Controller\SecurityController::logout
+  methods: ["GET"]
+
+# Route to list of manga
+manga_list:
+  path: /manga
+  controller: App\Controller\MangaController::index
+  methods: [GET]
+
+# Route to specific manga
+manga_show:
+  path: /manga/{id}
+  controller: App\Controller\MangaController::show
+  requirements:
+    id: \d+
+  methods: [GET]
+
+# Route to create new manga
+manga_new:
+  path: /manga/new
+  controller: App\Controller\MangaController::new
+  methods: [GET, POST]
+
+# Route to profile
+profile:
+  path: /profile
+  controller: App\Controller\ProfileController::index
+  methods: [GET]
+
+# Route to edit profile
+profile_edit:
+  path: /profile/edit
+  controller: App\Controller\ProfileController::edit
+  methods: [GET, POST]
+
+show_profile:
+  path: /profile/{id}
+  controller: App\Controller\ProfileController::show
+  methods: [GET]

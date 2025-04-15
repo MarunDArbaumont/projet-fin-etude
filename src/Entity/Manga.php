@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use PHPUnit\TextUI\XmlConfiguration\File;
 
 #[ORM\Entity]
 class Manga
@@ -22,7 +23,11 @@ class Manga
     private string $author;
 
     #[ORM\Column(type: 'date')]
-    private ?\DateTimeInterface $releaseDate = null;
+    private ?\DateTimeInterface $releaseDate;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $cover = null;
+
 
     public function getId(): ?int
     {
@@ -70,6 +75,16 @@ class Manga
     public function setReleaseDate(\DateTimeInterface $releaseDate): self
     {
         $this->releaseDate = $releaseDate;
+        return $this;
+    }
+    public function getCover(): ?string
+    {
+        return $this->cover;
+    }
+
+    public function setCover(?string $cover): self
+    {
+        $this->cover = $cover;
         return $this;
     }
 }

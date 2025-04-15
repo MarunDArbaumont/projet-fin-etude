@@ -1,0 +1,27 @@
+header {
+    display: flex;
+    padding: 0 5rem;
+    gap: var(--normal-gap);
+    min-height: 4rem;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--secondar-color);
+}
+
+header nav {
+    display: flex;
+    gap: var(--normal-gap);
+}
+
+header a {
+    color: var(--primary-font-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+header a:hover {
+    color: var(--primary-font-color-constrast);
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-bottom: 1px solid var(--primary-font-color-constrast);
+}
