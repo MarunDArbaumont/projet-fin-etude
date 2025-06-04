@@ -5,4 +5,11 @@ footer {
     min-height: 4rem;
     align-items: center;
     justify-content: space-between;
+    background-color: var(--primaray-color-contrast);
+}
+
+footer p,
+footer a,
+footer li {
+    color: var(--primary-color);
 }

@@ -22,6 +22,10 @@
     height: 100%;
 }
 
+.manga-card p {
+    text-align: center;
+}
+
 /* Single manga */
 .single-manga {
     display: flex;

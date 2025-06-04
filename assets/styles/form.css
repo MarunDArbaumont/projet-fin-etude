@@ -32,3 +32,58 @@ form[name=login] div {
     flex-direction: column;
     gap: var(--small-gap);
 }
+
+form[name=manga] {
+    width: 100%;
+}
+
+form #manga {
+    display: flex;
+    flex-direction: column;
+    gap: var(--normal-gap);
+}
+
+
+form #manga div {
+    display: flex;
+    flex-direction: column;
+    gap: var(--small-gap);
+    width: 20rem;
+}
+
+#manga #manga_cover {
+    color: var(--primary-font-color);
+}
+
+#manga #manga_releaseDate {
+    width: 7.5rem;
+}
+
+#manga #manga_save {
+    width: 100%;
+}
+
+form[name=user_profile] {
+    display: flex;
+    flex-direction: column;
+    gap: var(--normal-gap);
+}
+
+form[name=user_profile] div {
+    display: flex;
+    flex-direction: column;
+    gap: var(--small-gap);
+    width: 100%;
+}
+
+form[name=user_profile] textarea {
+    width: 100%;
+    height: 10rem;
+    padding: var(--basic-padding);
+    box-sizing: border-box;
+    border: 2px solid var(--secondar-color);
+    border-radius: 4px;
+    background-color: var(--primary-font-color);
+    font-size: 16px;
+    resize: none;
+}

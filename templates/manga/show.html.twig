@@ -1,4 +1,5 @@
 {% extends 'layouts/layout-full-width.html.twig' %}
+{% block title %}{{ manga.name }}{% endblock %}
 {% block contentFullWidth %}
     <div class="single-manga">
         <img class="single-manga-cover" src="{{ asset('uploads/covers/' ~ manga.cover) }}"/>
@@ -9,5 +10,8 @@
             <p>(Released: {{ manga.releaseDate|date('Y-m-d') }})</p>
         </div>
     </div>
+    <form action="{{ path('add_manga', { id: manga.id }) }}" method="post" style="display:inline;">
+        <button type="submit" class="btn btn-primary">Add to My Profile</button>
+    </form> 
 {% endblock %}
 

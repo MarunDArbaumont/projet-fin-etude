@@ -63,7 +63,8 @@ body {
     gap: var(--big-gap);
 }
 
-button {
+button,
+.button {
     background-color: var(--secondar-color);
     border: 1px solid var(--secondar-color);
     border-radius: 5px;
@@ -72,7 +73,8 @@ button {
     color: var(--primary-font-color);
 }
 
-button:hover {
+button:hover,
+.button:hover {
     background-color: var(--primary-font-color);
     color: var(--secondar-color);
 }

@@ -13,6 +13,11 @@ header nav {
     gap: var(--normal-gap);
 }
 
+.login-register {
+    display: flex;
+    gap: var(--normal-gap);
+}
+
 header a {
     color: var(--primary-font-color);
     font-size: 1.5rem;

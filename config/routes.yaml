@@ -62,3 +62,9 @@ show_profile:
   path: /profile/{id}
   controller: App\Controller\ProfileController::show
   methods: [GET]
+
+# Add manga to profile
+add_manga:
+  path: /manga/{id}/add
+  controller: App\Controller\ProfileController::add
+  methods: [POST]

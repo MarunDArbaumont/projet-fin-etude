@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use PHPUnit\TextUI\XmlConfiguration\File;
 
@@ -28,6 +30,8 @@ class Manga
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $cover = null;
 
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'mangas')]
+    private Collection $users;
 
     public function getId(): ?int
     {
@@ -86,5 +90,10 @@ class Manga
     {
         $this->cover = $cover;
         return $this;
+    }
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
     }
 }
