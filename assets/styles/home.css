@@ -1,0 +1,33 @@
+#content .manga-list-home {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+#content .fonctionnalites {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#content .fonctionnalites-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--normal-gap);
+    padding: var(--basic-padding);
+    border: 1px solid var(--primary-font-color-constrast);
+    border-radius: 10px;
+    height: fit-content;
+    width: 15rem;
+}
+
+@media screen and (max-width: 700px) {
+    #content .fonctionnalites {
+        flex-direction: column;
+        gap: var(--big-gap);
+    }
+
+    #content .fonctionnalites-card {
+        width: 80%;
+    }
+}

@@ -2,7 +2,7 @@
 {% block title %}{{ manga.name }}{% endblock %}
 {% block contentFullWidth %}
     <div class="single-manga">
-        <img class="single-manga-cover" src="{{ asset('uploads/covers/' ~ manga.cover) }}"/>
+        <img class="single-manga-cover" src="{{ asset('uploads/covers/' ~ manga.cover) }}" alt="Couverture du manga {{ manga.name }}"/>
         <div class="single-manga-info">
             <h2 class="single-manga-title">{{ manga.name }}</h2>
             <p>Author: {{ manga.author }}</p>

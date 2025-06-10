@@ -10,6 +10,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Validator\Constraints\IsTrue;
 
 class RegisterType extends AbstractType
 {
@@ -30,6 +32,15 @@ class RegisterType extends AbstractType
                 'second_options' => ['label' => 'Confirm Password'],
                 'invalid_message' => 'Passwords must match.',
             ])
+            ->add('rgpdConsent', CheckboxType::class, [
+                'label' => 'J’accepte la politique de confidentialité',
+                'mapped' => false,
+                'constraints' => [
+                    new IsTrue([
+                    'message' => 'Vous devez accepter les conditions pour créer un compte.',
+                    ]),
+                ],
+             ])
             ->add('submit', SubmitType::class, ['label' => 'Register']);
     }
 

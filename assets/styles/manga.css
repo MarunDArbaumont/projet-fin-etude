@@ -36,3 +36,12 @@
 .single-manga-cover {
     width: 20rem;
 }
+
+@media screen and (max-width: 700px) {
+    .manga-card {
+        border: 2px solid var(--primary-font-color-constrast);
+        border-radius: 10px;
+        height: 30rem;
+        width: 20rem;
+    }
+}

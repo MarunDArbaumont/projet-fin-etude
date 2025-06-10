@@ -1,6 +1,6 @@
 footer {
     display: flex;
-    padding: 0 5rem;
+    padding: 1rem 5rem;
     gap: var(--normal-gap);
     min-height: 4rem;
     align-items: center;
@@ -12,4 +12,10 @@ footer p,
 footer a,
 footer li {
     color: var(--primary-color);
+}
+
+footer nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--normal-gap);
 }

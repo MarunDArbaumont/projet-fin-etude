@@ -5,10 +5,6 @@ form {
     gap: var(--small-gap);
 }
 
-form button {
-    width: 6rem;
-}
-
 #register {
     display: flex;
     flex-direction: column;
@@ -84,6 +80,6 @@ form[name=user_profile] textarea {
     border: 2px solid var(--secondar-color);
     border-radius: 4px;
     background-color: var(--primary-font-color);
-    font-size: 16px;
+    font-size: var(--font-size-paragraphe);
     resize: none;
 }

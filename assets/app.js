@@ -11,3 +11,4 @@ import "./styles/form.css";
 import "./styles/profile.css";
 import "./styles/header.css";
 import "./styles/footer.css";
+import "./styles/home.css";

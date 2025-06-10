@@ -4,6 +4,12 @@
     padding: 0;
 }
 
+html,
+body {
+    overflow-x: hidden;
+}
+
+
 /* ---- Font ---- */
 @font-face {
     font-family: "Roboto";
@@ -30,6 +36,7 @@
     --primary-font-color-constrast: #939393;
     --content-width: 80rem;
     --basic-padding: 1.5rem;
+    --font-size-paragraphe: 1rem;
 }
 
 h1,
@@ -41,6 +48,16 @@ li,
 label {
     font-family: var(--primary-font);
     color: var(--primary-font-color);
+}
+
+p {
+    font-size: var(--font-size-paragraphe);
+}
+
+#content div {
+    display: flex;
+    flex-direction: column;
+    gap: var(--small-gap);
 }
 
 a {
@@ -69,12 +86,30 @@ button,
     border: 1px solid var(--secondar-color);
     border-radius: 5px;
     padding: 0.5rem;
-    font-size: 1rem;
+    font-size: var(--font-size-paragraphe);
     color: var(--primary-font-color);
+    width: fit-content;
 }
 
 button:hover,
 .button:hover {
     background-color: var(--primary-font-color);
     color: var(--secondar-color);
+}
+
+#content .button-group {
+    flex-direction: row;
+}
+
+ul {
+    padding: 0 1rem;
+}
+
+@media screen and (max-width: 700px) {
+    #content {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem 2rem;
+        gap: var(--big-gap);
+    }
 }

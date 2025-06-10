@@ -4,19 +4,25 @@ controllers:
     namespace: App\Controller
   type: attribute
 
-# Define a route for the homepage
+# Route to the homepage
 home:
   path: /
   controller: App\Controller\MainController::index
   methods: [GET]
 
-# Define a route for registering users
+# Route to the homepage
+mentions-legales:
+  path: /mentions-legales
+  controller: App\Controller\MainController::mentions
+  methods: [GET]
+
+# Route tp registering users
 register:
   path: /register
   controller: App\Controller\RegisterController::register
   methods: [GET, POST]
 
-# Define a route to login
+# Route to login
 app_login:
   path: /login
   controller: App\Controller\SecurityController::login

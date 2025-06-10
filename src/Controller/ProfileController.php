@@ -77,6 +77,6 @@ class ProfileController extends AbstractController
         $entityManager->persist($user);
         $entityManager->flush();
 
-        return $this->redirectToRoute('manga_list');
+        return $this->redirectToRoute('profile');
     }
 }

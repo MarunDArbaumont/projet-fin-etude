@@ -3,6 +3,55 @@
 {% block title %}Manga List{% endblock %}
 
 {% block contentFullWidth %}
-    <h1>Ceci est la home</h1>
+    <h1>MangaList</h1>
+    <div class="presentation">
+        <h2>Ta mangathèque. Tes mangas. Ta communauté.</h2>
+        <h3>Note, commente et découvre des centaines de mangas avec d’autres passionnés.</h3>
+        <div class="button-group">
+            <a class="button" href="{{ path('app_login') }}">Se connecter</a>
+            <a class="button" href="{{ path('register') }}">Créer un compte</a>
+        </div>
+    </div>
+    <div class="discover">
+        <h2>Découvres des mangas</h2>
+        <div class="manga-list-home">
+        {% for manga in mangas %}
+            <a class="manga-card" href="{{ app.request.getSchemeAndHttpHost() }}/manga/{{manga.id}}">
+                <img src="{{ asset('uploads/covers/' ~ manga.cover) }}" alt="Couverture du manga {{ manga.name }}"/>
+                <div>
+                    <p>{{ manga.name }}</p>
+                    <p>{{ manga.author }}</p>
+                </div>
+            </a>
+        {% else %}
+            <p>No mangas found.</p>
+        {% endfor %}
+        </div>
+    </div>
+    <div>
+        <h2>Fonctionnalités clés</h2>
+        <div class="fonctionnalites">
+            <div class="fonctionnalites-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5A1E3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open-icon lucide-book-open"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+                <h3>Mangathèque</h3>
+                <p>Créer ta propre mangathèque et garde une trace de tes lectures</p>
+            </div>
+            <div class="fonctionnalites-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5A1E3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square-share-icon lucide-message-square-share"><path d="M21 12v3a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h7"/><path d="M16 3h5v5"/><path d="m16 8 5-5"/></svg>
+                <h3>Partages</h3>
+                <p>Notes et commentes les mangas. Partages tes points de vues et défends tes personnages préférer.</p>
+            </div>
+            <div class="fonctionnalites-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5A1E3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-telescope-icon lucide-telescope"><path d="m10.065 12.493-6.18 1.318a.934.934 0 0 1-1.108-.702l-.537-2.15a1.07 1.07 0 0 1 .691-1.265l13.504-4.44"/><path d="m13.56 11.747 4.332-.924"/><path d="m16 21-3.105-6.21"/><path d="M16.485 5.94a2 2 0 0 1 1.455-2.425l1.09-.272a1 1 0 0 1 1.212.727l1.515 6.06a1 1 0 0 1-.727 1.213l-1.09.272a2 2 0 0 1-2.425-1.455z"/><path d="m6.158 8.633 1.114 4.456"/><path d="m8 21 3.105-6.21"/><circle cx="12" cy="13" r="2"/></svg>
+                <h3>Découvres</h3>
+                <p>Découvres de nouveaux mangas sans cesse. Découvres toi de nouvelles séries préférer.</p>
+            </div>
+            <div class="fonctionnalites-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5A1E3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round-plus-icon lucide-user-round-plus"><path d="M2 21a8 8 0 0 1 13.292-6"/><circle cx="10" cy="8" r="5"/><path d="M19 16v6"/><path d="M22 19h-6"/></svg>
+                <h3>Suis</h3>
+                <p>Garde un oeil sur les dernières publications de tes "rédacteurs" préférer.</p>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

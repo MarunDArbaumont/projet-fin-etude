@@ -3,7 +3,7 @@
 {% block body %}
 <header>
     <nav>
-        <a href="{{ path('home') }}">Home</a>
+        <a href="{{ path('home') }}" tabindex="0">Home</a>
         <a href="{{ path('profile') }}">Profile</a>
         <a href="{{ path('manga_list') }}">Manga</a>
     </nav>
@@ -16,10 +16,14 @@
         {% endif %}
     </div>
     </header>
-    <div id="content">
+    <main id="content">
         {% block contentFullWidth %}{% endblock %}
-    </div>
+    </main>
     <footer>
-            <p>Ceci est le footer</p>
-        </footer>
+        <nav>
+        <a href="{{ path('mentions-legales') }}">Mention Légales</a>
+        <a href="{{ path('profile') }}">Profile</a>
+        <a href="{{ path('manga_list') }}">Manga</a>
+    </nav>
+    </footer>
 {% endblock %}
