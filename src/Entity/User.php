@@ -42,6 +42,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\JoinTable(name: 'user_manga')]
     private Collection $mangas;
 
+    /**
+     * @var Collection<int, Commentaire>
+     */
+    #[ORM\OneToMany(targetEntity: Commentaire::class, mappedBy: 'author')]
+    private Collection $commentaires;
+
     public function getId(): ?int { return $this->id; }
     public function getEmail(): string { return $this->email; }
     public function setEmail(string $email): self { $this->email = $email; return $this; }
@@ -91,6 +97,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->mangas = new ArrayCollection();
+        $this->commentaires = new ArrayCollection();
     }
 
     public function getMangas(): Collection
@@ -110,6 +117,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeManga(Manga $manga): self
     {
         $this->mangas->removeElement($manga);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commentaire>
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaire(Commentaire $commentaire): static
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires->add($commentaire);
+            $commentaire->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaire $commentaire): static
+    {
+        if ($this->commentaires->removeElement($commentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getAuthor() === $this) {
+                $commentaire->setAuthor(null);
+            }
+        }
 
         return $this;
     }

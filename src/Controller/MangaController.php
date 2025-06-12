@@ -2,11 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Commentaire;
 use App\Entity\Manga;
 use App\Entity\User;
+use App\Form\CommentType;
 use App\Form\Type\MangaType;
 use Doctrine\ORM\EntityManagerInterface;
+use Dom\Comment;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,15 +28,31 @@ class MangaController extends AbstractController
         ]);
     }
 
-    public function show(EntityManagerInterface $entityManager, int $id): Response
+    public function show(Manga $manga, Request $request, EntityManagerInterface $em, Security $security): Response
     {
-        $manga = $entityManager->getRepository(Manga::class)->find($id);
+        $comment = new Commentaire();
+        $comment->setManga($manga);
+        $comment->setCreatedAt(new \DateTime());
+        $comment->setAuthor($security->getUser());
 
-        if (!$manga) {
-            throw $this->createNotFoundException('No manga found for id ' . $id);
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($comment);
+            $em->flush();
+
+            return $this->redirectToRoute('manga_show', ['id' => $manga->getId()]);
+        }
+        if ($form->isSubmitted() && !$form->isValid()) {
+            dd((string) $form->getErrors(true, false));
         }
 
-        return $this->render('manga/show.html.twig', ['manga'=> $manga]);
+
+        return $this->render('manga/show.html.twig', [
+            'manga' => $manga,
+            'commentForm' => $form->createView(),
+        ]);
     }
 
     #[IsGranted('ROLE_ADMIN')] // Restrict access to only users with ROLE_ADMIN

@@ -44,7 +44,7 @@ manga_show:
   controller: App\Controller\MangaController::show
   requirements:
     id: \d+
-  methods: [GET]
+  methods: [GET, POST]
 
 # Route to create new manga
 manga_new:

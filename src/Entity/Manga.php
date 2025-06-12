@@ -33,6 +33,12 @@ class Manga
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'mangas')]
     private Collection $users;
 
+    /**
+     * @var Collection<int, Commentaire>
+     */
+    #[ORM\OneToMany(targetEntity: Commentaire::class, mappedBy: 'manga')]
+    private Collection $commentaires;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -95,5 +101,36 @@ class Manga
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->commentaires = new ArrayCollection();
+    }
+
+    /**
+     * @return Collection<int, Commentaire>
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaire(Commentaire $commentaire): static
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires->add($commentaire);
+            $commentaire->setManga($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaire $commentaire): static
+    {
+        if ($this->commentaires->removeElement($commentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getManga() === $this) {
+                $commentaire->setManga(null);
+            }
+        }
+
+        return $this;
     }
 }

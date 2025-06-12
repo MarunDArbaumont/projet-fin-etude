@@ -12,6 +12,30 @@
     </div>
     <form action="{{ path('add_manga', { id: manga.id }) }}" method="post" style="display:inline;">
         <button type="submit" class="btn btn-primary">Add to My Profile</button>
-    </form> 
+    </form>
+    <h2>Laisser un commentaire</h2>
+    {% if app.user %}
+        {{ form_start(commentForm) }}
+            {{ form_row(commentForm.rating) }}
+            {{ form_row(commentForm.contenu) }}
+        {{ form_end(commentForm) }}
+        {{ form_errors(commentForm) }}
+    {% else %}
+        <p><a href="{{ path('app_login') }}">Connecte-toi</a> pour commenter ce manga.</p>
+    {% endif %}
+
+    <hr>
+
+    <h2>Commentaires</h2>
+    {% for comment in manga.commentaires %}
+        <div class="comment">
+            <a href="{{ path('show_profile', { id: comment.author.id }) }}"><strong>{{ comment.author.name }}</strong></a>
+            <small>le {{ comment.createdAt|date('d/m/Y') }}</small><br>
+            Note : {{ comment.rating }}/5<br>
+            <p>{{ comment.contenu }}</p>
+        </div>
+    {% else %}
+        <p>Aucun commentaire pour le moment.</p>
+    {% endfor %}
 {% endblock %}
 

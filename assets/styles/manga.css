@@ -37,6 +37,15 @@
     width: 20rem;
 }
 
+.comment {
+    font-family: var(--primary-font);
+    color: var(--primary-font-color);
+    width: fit-content;
+    padding: var(--basic-padding);
+    border: solid 1px var(--primary-font-color);
+    border-radius: 10px;
+}
+
 @media screen and (max-width: 700px) {
     .manga-card {
         border: 2px solid var(--primary-font-color-constrast);
