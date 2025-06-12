@@ -2,7 +2,15 @@
 
 {% block body %}
 <header>
-    <nav>
+    <nav class="header-nav-desk">
+        <a href="{{ path('home') }}" tabindex="0">Home</a>
+        <a href="{{ path('profile') }}">Profile</a>
+        <a href="{{ path('manga_list') }}">Manga</a>
+    </nav>
+    <div class="burger-menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ededed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 12h16"/><path d="M4 18h16"/><path d="M4 6h16"/></svg>
+    </div>
+    <nav class="header-nav-mobile" style="display: none;">
         <a href="{{ path('home') }}" tabindex="0">Home</a>
         <a href="{{ path('profile') }}">Profile</a>
         <a href="{{ path('manga_list') }}">Manga</a>

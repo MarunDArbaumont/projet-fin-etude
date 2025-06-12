@@ -12,3 +12,4 @@ import "./styles/profile.css";
 import "./styles/header.css";
 import "./styles/footer.css";
 import "./styles/home.css";
+import "./js/mobile-nav.js";
